@@ -1,0 +1,7 @@
+.sticky-top {
+    top: 60px;
+    /* TODO: mobile mode when you scroll down the navbar hide the first element of the filter
+    ** All Categories, to solve this make the position of the fiter under the nav. */
+    padding-bottom: 20px;
+}
+

@@ -1,0 +1,32 @@
+<h1>Orders</h1>
+
+<ng-container *ngIf="orders$ | async as order">
+  <table class="table table-hover" [mfData]="order" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+        <tr>
+            <th style="width: 20%">
+                <mfDefaultSorter by="order.shipping.name">Customer</mfDefaultSorter>
+            </th>
+            <th style="width: 50%">
+                <mfDefaultSorter by="order.datePlaced">Date</mfDefaultSorter>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of mf.data">
+            <td>{{ order.shipping.name }}</td>
+            <td>{{ order.datePlaced | date:'MMMM dd, yyyy' }}</td>
+            <td><a [routerLink]="['/admin/orders/', order.userId]">View</a></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+            </td>
+        </tr>
+    </tfoot>
+  </table>
+</ng-container>
+
